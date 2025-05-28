@@ -41,20 +41,47 @@ This tool monitors global currency exchange rates and alerts the user if a speci
 
 ## How to Run
 
-The main entry point for the application is `src/main.py`. This script currently uses a predefined set of alert conditions.
+The main entry point for the application is `src/main.py`. You need to provide alert conditions via command-line arguments.
 
 1.  **Ensure you have completed the setup steps (cloning and installing dependencies).**
 
 2.  **Run the application from the project's root directory (`currency_monitor/`):**
+
+    The primary argument is `--condition`, which defines an alert. It takes three parameters:
+    *   `CURRENCY`: The 3-letter currency code (e.g., USD, GBP).
+    *   `PERCENT`: The percentage drop threshold (e.g., `2.5` for 2.5%).
+    *   `DAYS`: The time period in days over which the drop is checked (e.g., `30`).
+
+    You can specify `--condition` multiple times to monitor several currencies.
+
+    **Command Syntax:**
     ```bash
-    python src/main.py
-    ```
-    Or, navigate into the `src` directory and run:
-    ```bash
-    python main.py
+    python src/main.py --condition <CURRENCY> <PERCENT> <DAYS> [--condition <CURRENCY> <PERCENT> <DAYS> ...] [-v|-vv]
     ```
 
-    The application will then print out any currency drop alerts that meet the predefined criteria.
+    **Examples:**
+
+    *   **Monitor USD for a 2% drop over 30 days:**
+        ```bash
+        python src/main.py --condition USD 2.0 30
+        ```
+
+    *   **Monitor USD for a 2% drop over 30 days AND GBP for a 1.5% drop over 14 days:**
+        ```bash
+        python src/main.py --condition USD 2.0 30 --condition GBP 1.5 14
+        ```
+
+    *   **Run with INFO level logging on the console:**
+        ```bash
+        python src/main.py --condition JPY 5 60 -v
+        ```
+
+    *   **Run with DEBUG level logging on the console:**
+        ```bash
+        python src/main.py --condition CAD 3 45 -vv
+        ```
+
+    If no conditions are provided, or if provided conditions are invalid, the script will log an error and exit. Refer to the console output and `currency_monitor.log` for details on triggered alerts or errors.
 
 ## Running Tests
 
