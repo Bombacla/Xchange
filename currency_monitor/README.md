@@ -63,6 +63,12 @@ python -m unittest discover tests
 
 This will discover and run all tests in the `tests` directory.
 
+## Logging
+
+The application logs important events, warnings, and errors to a file named `currency_monitor.log`, located in the root directory of the project. Logs are also output to the console.
+The log file can be useful for monitoring the application's activity and for troubleshooting any issues that may arise.
+The default logging levels are INFO for console output and DEBUG for file output.
+
 ## Future Enhancements (Planned)
 
 *   Allow users to define alert conditions via CLI arguments or a configuration file.
