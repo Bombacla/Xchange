@@ -24,6 +24,9 @@ This tool monitors global currency exchange rates and alerts the user if a speci
 1.  **Clone the repository:**
     ```bash
     git clone https://your-git-repository-url-here/currency_monitor.git
+    ```
+    **Note:** The URL above is a placeholder. Replace `https://your-git-repository-url-here/currency_monitor.git` with the actual URL of your Git repository.
+    ```bash
     cd currency_monitor
     ```
 
